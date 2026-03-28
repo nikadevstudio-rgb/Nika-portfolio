@@ -101,6 +101,8 @@ header,
 .services-section,
 .portfolio-section,
 .about-section,
+.pricing-section,
+.pricing-details-section,
 .contact-section,
 .portfolio-page,
 .portfolio-hero,
@@ -143,15 +145,17 @@ header {
 
 .navbar {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(3, 3, 12, 0.52);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 24px;
   position: relative;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.28),
+    0 0 24px rgba(56, 102, 242, 0.06);
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -168,31 +172,31 @@ header {
   height: calc(100% - 20px);
   background: linear-gradient(
     90deg,
-    rgba(111, 4, 217, 1) 0%,
-    rgba(27, 2, 115, 1) 25%,
-    rgba(56, 102, 242, 1) 50%,
-    rgba(5, 151, 242, 1) 75%,
-    rgba(5, 199, 242, 1) 100%
+    rgba(111, 4, 217, 0.95) 0%,
+    rgba(27, 2, 115, 0.95) 25%,
+    rgba(56, 102, 242, 0.95) 55%,
+    rgba(5, 151, 242, 0.95) 78%,
+    rgba(5, 199, 242, 0.95) 100%
   );
   border-radius: 16px;
   transition:
     left 0.4s ease,
     width 0.4s ease;
   box-shadow:
-    0 4px 24px rgba(15, 211, 255, 0.4),
-    0 0 48px rgba(252, 70, 194, 0.2);
+    0 4px 18px rgba(15, 211, 255, 0.25),
+    0 0 28px rgba(252, 70, 194, 0.12);
   z-index: 1;
   pointer-events: none;
 }
 
 .nav-link {
-  min-width: 120px;
-  padding: 5px 40px;
+  min-width: 104px;
+  padding: 6px 24px;
   border-radius: 50px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.74);
   text-decoration: none;
   font-family: "Poppins", sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.93rem;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -203,16 +207,21 @@ header {
   z-index: 2;
   transition:
     color 0.3s ease,
-    background 0.3s ease;
+    background 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .nav-link:hover {
   color: #fff;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .nav-link.active {
   color: #fff;
+}
+
+.nav-link-textonly {
+  min-width: 96px;
 }
 
 .nav-icon {
@@ -223,7 +232,7 @@ header {
 }
 
 .nav-link:hover .nav-icon {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 #home {
@@ -277,10 +286,11 @@ header {
   font-family: "Poppins", sans-serif;
   text-align: left;
   margin-top: 20px;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.82);
   max-width: 620px;
+  line-height: 1.8;
 }
 
 .profile-pic {
@@ -363,7 +373,7 @@ header {
 
 .section-heading {
   text-align: center;
-  max-width: 700px;
+  max-width: 760px;
   margin: 0 auto 40px;
 }
 
@@ -859,6 +869,273 @@ header {
   margin-top: 40px;
 }
 
+.pricing-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 40px 120px;
+  position: relative;
+  z-index: 2;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 24px;
+  padding: 32px 26px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 24px;
+  background: linear-gradient(
+    90deg,
+    rgba(111, 4, 217, 0.7) 0%,
+    rgba(27, 2, 115, 0.7) 25%,
+    rgba(56, 102, 242, 0.7) 50%,
+    rgba(5, 151, 242, 0.7) 75%,
+    rgba(5, 199, 242, 0.7) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 10px 30px rgba(6, 133, 255, 0.12),
+    0 0 20px rgba(15, 211, 255, 0.08);
+}
+
+.pricing-card-featured {
+  box-shadow:
+    0 0 24px rgba(5, 199, 242, 0.12),
+    0 0 44px rgba(111, 4, 217, 0.08);
+}
+
+.pricing-icon {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 22px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    rgba(111, 4, 217, 0.9),
+    rgba(56, 102, 242, 0.9),
+    rgba(5, 199, 242, 0.9)
+  );
+  box-shadow:
+    0 0 18px rgba(15, 211, 255, 0.18),
+    0 0 30px rgba(252, 70, 194, 0.08);
+}
+
+.pricing-card h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.pricing-intro {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.98rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 22px;
+}
+
+.pricing-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding: 0;
+}
+
+.pricing-list li {
+  position: relative;
+  padding-left: 28px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.96rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.pricing-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    135deg,
+    rgba(111, 4, 217, 1),
+    rgba(56, 102, 242, 1),
+    rgba(5, 199, 242, 1)
+  );
+  box-shadow:
+    0 0 10px rgba(5, 199, 242, 0.35),
+    0 0 18px rgba(111, 4, 217, 0.18);
+}
+
+.pricing-price {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.pricing-note {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.68);
+  margin-bottom: 22px;
+}
+
+.pricing-btn {
+  display: block;
+  margin: auto auto 0;
+}
+
+.pricing-extra {
+  max-width: 850px;
+  margin: 36px auto 0;
+  text-align: center;
+}
+
+.pricing-details-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 40px 120px;
+  position: relative;
+  z-index: 2;
+}
+
+.pricing-details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.pricing-details-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 24px;
+  padding: 30px 26px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.pricing-details-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 24px;
+  background: linear-gradient(
+    120deg,
+    rgba(111, 4, 217, 0.45),
+    rgba(56, 102, 242, 0.55),
+    rgba(5, 199, 242, 0.45)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.pricing-details-card h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.35rem;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.pricing-details-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.96rem;
+  line-height: 1.8;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.76);
+  margin-bottom: 22px;
+}
+
+.pricing-details-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+}
+
+.pricing-details-list li {
+  position: relative;
+  padding-left: 28px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.pricing-details-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    135deg,
+    rgba(111, 4, 217, 1),
+    rgba(56, 102, 242, 1),
+    rgba(5, 199, 242, 1)
+  );
+  box-shadow:
+    0 0 10px rgba(5, 199, 242, 0.35),
+    0 0 18px rgba(111, 4, 217, 0.18);
+}
+
 .contact-section {
   max-width: 1200px;
   margin: 0 auto;
@@ -1266,7 +1543,9 @@ a:focus-visible {
   .portfolio-grid,
   .about-grid,
   .contact-grid,
-  .about-info-grid {
+  .about-info-grid,
+  .pricing-grid,
+  .pricing-details-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1325,9 +1604,13 @@ a:focus-visible {
   }
 
   .nav-link {
-    min-width: 100px;
-    padding: 5px 22px;
-    font-size: 0.9rem;
+    min-width: 90px;
+    padding: 5px 16px;
+    font-size: 0.87rem;
+  }
+
+  .nav-link-textonly {
+    min-width: 84px;
   }
 
   .lang-switch {
@@ -1343,6 +1626,8 @@ a:focus-visible {
   .services-section,
   .portfolio-section,
   .about-section,
+  .pricing-section,
+  .pricing-details-section,
   .contact-section {
     padding-left: 24px;
     padding-right: 24px;
@@ -1354,6 +1639,8 @@ a:focus-visible {
 
   .portfolio-section,
   .about-section,
+  .pricing-section,
+  .pricing-details-section,
   .contact-section {
     padding-top: 90px;
     padding-bottom: 80px;
@@ -1398,6 +1685,26 @@ a:focus-visible {
   .scroll-to-top svg {
     width: 22px;
     height: 22px;
+  }
+
+  .pricing-card,
+  .pricing-details-card {
+    padding: 26px 22px;
+  }
+
+  .pricing-card h3,
+  .pricing-details-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .pricing-price {
+    font-size: 1.7rem;
+  }
+
+  .pricing-list li,
+  .pricing-details-list li,
+  .pricing-details-text {
+    font-size: 0.94rem;
   }
 }
 
