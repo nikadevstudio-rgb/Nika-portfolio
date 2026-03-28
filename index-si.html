@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="obrazky/favicon.png" />
+    <meta name="author" content="Nika" />
+
+    <title>Nika | Frontend razvijalka & grafična oblikovalka</title>
+    <meta
+      name="description"
+      content="Frontend razvijalka in grafična oblikovalka, ki ustvarja moderne, funkcionalne spletne strani in vizualne identitete."
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Preskoči na vsebino</a>
+
+    <div id="comets" aria-hidden="true"></div>
+
+    <header>
+      <nav class="navbar" aria-label="Glavna navigacija">
+        <div class="nav-indicator" aria-hidden="true"></div>
+
+        <a class="nav-link active" href="#home">
+          <svg
+            class="nav-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9,22 9,12 15,12 15,22" />
+          </svg>
+          <span>Domov</span>
+        </a>
+
+        <a class="nav-link" href="#services">
+          <svg
+            class="nav-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path
+              d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+            />
+          </svg>
+          <span>Storitve</span>
+        </a>
+
+        <a class="nav-link" href="#portfolio">
+          <svg
+            class="nav-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M3 7h18" />
+            <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            <rect x="3" y="7" width="18" height="13" rx="2" />
+          </svg>
+          <span>Portfelj</span>
+        </a>
+
+        <a class="nav-link" href="#about">
+          <svg
+            class="nav-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          <span>O meni</span>
+        </a>
+
+        <a class="nav-link" href="#contact">
+          <svg
+            class="nav-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M4 4h16v16H4z" />
+            <path d="M4 6l8 7 8-7" />
+          </svg>
+          <span>Kontakt</span>
+        </a>
+
+        <div class="lang-switch">
+          <a href="index.html" class="lang">EN</a>
+          <span class="lang-divider">|</span>
+          <a href="index-si.html" class="lang active">SI</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section id="home">
+        <div class="first">
+          <p class="intro-text">Živjo, sem Nika</p>
+
+          <h1 class="hero-title">
+            Frontend razvijalka <br />
+            & grafična oblikovalka
+          </h1>
+
+          <p class="whatido">
+            Združujem več kot 5 let izkušenj v grafičnem oblikovanju z modernim
+            razvojem spletnih strani, da ustvarjam čiste, funkcionalne rešitve,
+            ki izgledajo odlično in tudi dobro delujejo.
+          </p>
+
+          <a href="#contact" class="contact-btn">Sodelujva skupaj</a>
+        </div>
+
+        <div class="profile-pic">
+          <img
+            src="obrazky/profile.webp"
+            alt="Portret Nike, frontend razvijalke in grafične oblikovalke"
+            width="400"
+            height="400"
+            decoding="async"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+      </section>
+
+      <section
+        id="services"
+        class="services-section"
+        aria-label="Sekcija storitev"
+      >
+        <div class="section-heading">
+          <p class="section-label">Kaj delam</p>
+          <h2>Storitve</h2>
+          <p class="section-text">
+            Podjetjem pomagam zgraditi močno vizualno identiteto in ustvariti
+            čiste, učinkovite spletne strani, ki podpirajo njihovo blagovno
+            znamko in rast.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">✦</div>
+            <h3>Spletni dizajn</h3>
+            <p>
+              Čisti, moderni dizajni spletnih strani s poudarkom na jasnosti,
+              uporabniški izkušnji in resnični uporabnosti — ne samo na videzu.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">⌘</div>
+            <h3>Frontend razvoj</h3>
+            <p>
+              Odzivne spletne strani, izdelane z uporabo HTML in CSS, ob tem pa
+              svoje znanje JavaScripta še nadgrajujem za bolj dinamične
+              uporabniške izkušnje.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">◈</div>
+            <h3>Grafično oblikovanje</h3>
+            <p>
+              Praktično grafično oblikovanje za resnično uporabo — vizuali, ki
+              so jasni, funkcionalni in pripravljeni tako za digitalne kot
+              tiskane materiale.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="portfolio"
+        class="portfolio-section"
+        aria-label="Sekcija portfelja"
+      >
+        <div class="section-heading">
+          <p class="section-label">Moje delo</p>
+          <h2>Portfelj</h2>
+          <p class="section-text">
+            Izbor mojih del, kjer združujem vizualno ustvarjalnost s
+            funkcionalnimi rešitvami.
+          </p>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="portfolio-card portfolio-card-light">
+            <img
+              src="obrazky/project1.webp"
+              alt="Primer oblikovanja pristajalne strani"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="card-overlay">
+              <h3>Oblikovanje pristajalne strani</h3>
+              <p>HTML • CSS</p>
+              <div class="card-line" aria-hidden="true"></div>
+            </div>
+          </article>
+
+          <article class="portfolio-card portfolio-card-light">
+            <img
+              src="obrazky/project2.webp"
+              alt="Primer razvoja poslovne spletne strani"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="card-overlay">
+              <h3>Razvoj poslovne spletne strani</h3>
+              <p>HTML • CSS • JavaScript</p>
+              <div class="card-line" aria-hidden="true"></div>
+            </div>
+          </article>
+
+          <article class="portfolio-card">
+            <img
+              src="obrazky/project3.webp"
+              alt="Primer UI UX oblikovanja v Figmi"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="card-overlay">
+              <h3>UI/UX Oblikovanje</h3>
+              <p>Figma</p>
+              <div class="card-line" aria-hidden="true"></div>
+            </div>
+          </article>
+
+          <article
+            class="portfolio-card portfolio-card-light portfolio-card-graphic"
+          >
+            <img
+              src="obrazky/project4.webp"
+              alt="Delo na področju vizualne identitete in grafičnega oblikovanja"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="card-overlay">
+              <h3>Vizualna identiteta & grafično oblikovanje</h3>
+              <p>Branding • Bannerji • Letaki</p>
+              <div class="card-line" aria-hidden="true"></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="portfolio-button-wrap">
+          <a href="portfolio-si.html" class="contact-btn">Poglej celoten portfelj</a>
+        </div>
+      </section>
+
+      <section id="about" class="about-section" aria-label="Sekcija o meni">
+        <div class="about-grid">
+          <div class="about-image-wrap">
+            <div class="about-image-circle">
+              <img
+                src="obrazky/about-photo.webp"
+                alt="Portret Nike"
+                width="400"
+                height="400"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <div class="about-content">
+            <p class="section-label">Kdo sem</p>
+            <h2>O meni</h2>
+
+            <p class="about-text">
+              Sem grafična oblikovalka z resničnimi izkušnjami iz prakse, ki zdaj
+              to znanje združujem s frontend razvojem. Delala sem na zelo
+              različnih projektih — od bannerjev, brošur in vizualov za družbena
+              omrežja do velikih formatov, kot so grafike za vozila, izložbe in
+              tiskani materiali.
+            </p>
+
+            <p class="about-text">
+              Moj cilj je ustvarjati moderne, čiste in funkcionalne spletne
+              strani, ki niso samo vizualno močne, ampak tudi podpirajo resnične
+              poslovne potrebe.
+            </p>
+
+            <div class="about-points">
+              <div class="about-point">
+                <span class="about-check" aria-hidden="true">✓</span>
+                <p>Izkušnje s tiskom in oblikovanjem velikih formatov</p>
+              </div>
+
+              <div class="about-point">
+                <span class="about-check" aria-hidden="true">✓</span>
+                <p>Razmišljanje skozi dizajn + frontend</p>
+              </div>
+
+              <div class="about-point">
+                <span class="about-check" aria-hidden="true">✓</span>
+                <p>Nenehno učenje in resnični projekti</p>
+              </div>
+            </div>
+
+            <div class="about-info-grid">
+              <div class="about-info-card">
+                <span class="about-info-label">Fokus</span>
+                <strong>Grafično oblikovanje & frontend razvoj</strong>
+              </div>
+
+              <div class="about-info-card">
+                <span class="about-info-label">Orodja</span>
+                <strong>HTML • CSS • JavaScript • Figma • Adobe Suite</strong>
+              </div>
+            </div>
+
+            <a href="#contact" class="contact-btn about-cta"
+              >Sodelujva skupaj</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        class="contact-section"
+        aria-label="Sekcija kontakta"
+      >
+        <div class="section-heading">
+          <p class="section-label">Stopi v stik</p>
+          <h2>Sodelujva skupaj</h2>
+          <p class="section-text contact-intro">
+            Si pripravljena svojo idejo spremeniti v resničnost? Pošlji mi
+            sporočilo in odgovorim ti v najkrajšem možnem času.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-form-card">
+            <form
+              id="contact-form"
+              class="contact-form"
+              action="https://formspree.io/f/xwvweled"
+              method="POST"
+            >
+              <input
+                type="hidden"
+                name="_subject"
+                value="Novo sporočilo iz portfelja"
+              />
+
+              <div class="form-group">
+                <label for="name">Tvoje ime</label>
+                <div class="input-wrap">
+                  <span class="input-icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                  </span>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Tvoje ime"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Tvoj e-mail</label>
+                <div class="input-wrap">
+                  <span class="input-icon" aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M4 4h16v16H4z" />
+                      <path d="M4 6l8 7 8-7" />
+                    </svg>
+                  </span>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Tvoj e-mail"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Tvoje sporočilo</label>
+                <div class="input-wrap textarea-wrap">
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Tvoje sporočilo"
+                    rows="6"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="contact-btn">Pošlji sporočilo</button>
+
+              <p id="form-status" class="form-status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-info-item">
+              <div class="contact-info-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.63 2.61a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6.09 6.09l1.47-1.29a2 2 0 0 1 2.11-.45c.84.3 1.71.51 2.61.63A2 2 0 0 1 22 16.92z"
+                  />
+                </svg>
+              </div>
+              <div class="contact-info-text">
+                <span>Telefon</span>
+                <strong><a href="tel:+38651470341">+386 51 470 341</a></strong>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M4 4h16v16H4z" />
+                  <path d="M4 6l8 7 8-7" />
+                </svg>
+              </div>
+              <div class="contact-info-text">
+                <span>E-pošta</span>
+                <strong
+                  ><a href="mailto:nikadev@gmail.com"
+                    >nikadev@gmail.com</a
+                  ></strong
+                >
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div class="contact-info-text">
+                <span>Lokacija</span>
+                <strong>Slovenija</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Pomakni na vrh">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        aria-hidden="true"
+      >
+        <path d="M12 19V5" />
+        <path d="M5 12l7-7 7 7" />
+      </svg>
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
