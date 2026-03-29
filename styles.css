@@ -2171,3 +2171,13 @@ a:focus-visible {
 .footer-links a:hover {
   color: #05c7f2;
 }
+
+.privacy-page {
+  color: #e5e7eb; /* světle šedá na text */
+}
+
+.privacy-page h1,
+.privacy-page h2 {
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+}
