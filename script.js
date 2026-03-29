@@ -46,29 +46,57 @@ let resizeTimeout;
 let lastFocusedElement = null;
 
 /* =========================
-   NAV INDICATOR
+   NAV / ACTIVE LINKS
 ========================= */
 function moveIndicator(element) {
-  if (!element || !indicator) return;
+  if (!element || !indicator || window.innerWidth <= 820) return;
 
   indicator.style.width = `${element.offsetWidth}px`;
   indicator.style.left = `${element.offsetLeft}px`;
 }
 
+function getLinkTargetId(href) {
+  if (!href || !href.includes("#")) return null;
+  return href.split("#")[1];
+}
+
 function setActiveLink(id) {
+  let activeLink = null;
+
   navLinks.forEach((link) => {
     const href = link.getAttribute("href");
-    if (!href) return;
-
-    const isHashLink = href.startsWith("#");
-    const isActive = isHashLink && href === `#${id}`;
+    const targetId = getLinkTargetId(href);
+    const isActive = targetId === id;
 
     link.classList.toggle("active", isActive);
 
     if (isActive) {
-      moveIndicator(link);
+      activeLink = link;
     }
   });
+
+  if (activeLink) {
+    moveIndicator(activeLink);
+  }
+}
+
+function updateActiveSection() {
+  if (isManualScrolling || sections.length === 0) return;
+
+  const triggerPoint = window.innerHeight * 0.35;
+  let currentSectionId = "";
+
+  sections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+
+    if (rect.top <= triggerPoint && rect.bottom >= triggerPoint) {
+      currentSectionId = section.id;
+    }
+  });
+
+  if (currentSectionId) {
+    setActiveLink(currentSectionId);
+  }
 }
 
 /* =========================
@@ -161,35 +189,6 @@ function startComets() {
 }
 
 /* =========================
-   ACTIVE SECTION OBSERVER
-========================= */
-if (sections.length > 0) {
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      if (isManualScrolling) return;
-
-      const visibleSections = entries.filter((entry) => entry.isIntersecting);
-
-      if (visibleSections.length > 0) {
-        const currentSection = visibleSections.reduce((prev, current) =>
-          current.intersectionRatio > prev.intersectionRatio ? current : prev
-        );
-
-        setActiveLink(currentSection.target.id);
-      }
-    },
-    {
-      threshold: [0.35, 0.55, 0.75],
-      rootMargin: "-20% 0px -35% 0px"
-    }
-  );
-
-  sections.forEach((section) => {
-    sectionObserver.observe(section);
-  });
-}
-
-/* =========================
    FADE-IN SECTIONS
 ========================= */
 if (!prefersReducedMotion) {
@@ -216,34 +215,50 @@ if (!prefersReducedMotion) {
 }
 
 /* =========================
-   NAV SCROLL FOR HASH LINKS
+   NAV CLICK / HASH LINKS
 ========================= */
+const navbar = document.querySelector(".navbar");
+const menuToggle = document.querySelector(".menu-toggle");
+
 navLinks.forEach((link) => {
   link.addEventListener("click", (e) => {
     const href = link.getAttribute("href");
-    if (!href || !href.startsWith("#")) return;
+    const targetId = getLinkTargetId(href);
 
-    const targetId = href.replace("#", "");
+    if (!targetId) return;
+
     const targetSection = document.getElementById(targetId);
-    if (!targetSection) return;
 
-    e.preventDefault();
+    if (href.startsWith("#") && targetSection) {
+      e.preventDefault();
 
-    isManualScrolling = true;
-    clearTimeout(manualScrollTimeout);
+      isManualScrolling = true;
+      clearTimeout(manualScrollTimeout);
 
-    setActiveLink(targetId);
-
-    targetSection.scrollIntoView({
-      behavior: prefersReducedMotion ? "auto" : "smooth",
-      block: "start"
-    });
-
-    manualScrollTimeout = setTimeout(() => {
-      isManualScrolling = false;
       setActiveLink(targetId);
-    }, prefersReducedMotion ? 100 : 900);
+
+      targetSection.scrollIntoView({
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "start"
+      });
+
+      manualScrollTimeout = setTimeout(() => {
+        isManualScrolling = false;
+        updateActiveSection();
+      }, prefersReducedMotion ? 100 : 1000);
+    }
+
+    if (navbar && window.innerWidth <= 820) {
+      navbar.classList.remove("open");
+    }
   });
+});
+
+/* =========================
+   SCROLL LISTENER
+========================= */
+window.addEventListener("scroll", () => {
+  updateActiveSection();
 });
 
 /* =========================
@@ -255,7 +270,12 @@ window.addEventListener("load", () => {
     startComets();
   }
 
-  const activeLink = document.querySelector(".nav-link.active");
+  updateActiveSection();
+
+  const activeLink =
+    document.querySelector(".nav-link.active") ||
+    document.querySelector(".nav-link");
+
   if (activeLink) {
     moveIndicator(activeLink);
   }
@@ -272,9 +292,15 @@ window.addEventListener("resize", () => {
       generateStars();
     }
 
+    updateActiveSection();
+
     const activeLink = document.querySelector(".nav-link.active");
     if (activeLink) {
       moveIndicator(activeLink);
+    }
+
+    if (navbar && window.innerWidth > 820) {
+      navbar.classList.remove("open");
     }
   }, 150);
 });
@@ -361,6 +387,10 @@ const graphicSlides = document.querySelectorAll(".graphic-slide");
 let currentGallery = [];
 let currentIndex = 0;
 let currentCategory = "";
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
 
 function formatGalleryTitle(category) {
   switch (category) {
@@ -436,6 +466,22 @@ function showPrevImage() {
   updateGalleryImage();
 }
 
+function handleSwipeGesture() {
+  const deltaX = touchEndX - touchStartX;
+  const deltaY = touchEndY - touchStartY;
+  const minSwipeDistance = 50;
+
+  if (Math.abs(deltaX) < minSwipeDistance) return;
+
+  if (Math.abs(deltaY) > Math.abs(deltaX)) return;
+
+  if (deltaX < 0) {
+    showNextImage();
+  } else {
+    showPrevImage();
+  }
+}
+
 graphicSlides.forEach((slide) => {
   const openCurrentGallery = () => {
     const category = slide.dataset.category;
@@ -468,6 +514,31 @@ if (galleryNext) {
 
 if (galleryPrev) {
   galleryPrev.addEventListener("click", showPrevImage);
+}
+
+if (galleryModal) {
+  galleryModal.addEventListener(
+    "touchstart",
+    (e) => {
+      if (!galleryModal.classList.contains("open")) return;
+
+      touchStartX = e.changedTouches[0].clientX;
+      touchStartY = e.changedTouches[0].clientY;
+    },
+    { passive: true }
+  );
+
+  galleryModal.addEventListener(
+    "touchend",
+    (e) => {
+      if (!galleryModal.classList.contains("open")) return;
+
+      touchEndX = e.changedTouches[0].clientX;
+      touchEndY = e.changedTouches[0].clientY;
+      handleSwipeGesture();
+    },
+    { passive: true }
+  );
 }
 
 document.addEventListener("keydown", (e) => {
@@ -544,5 +615,14 @@ if (scrollToTopBtn) {
       top: 0,
       behavior: prefersReducedMotion ? "auto" : "smooth"
     });
+  });
+}
+
+/* =========================
+   MOBILE MENU TOGGLE
+========================= */
+if (menuToggle && navbar) {
+  menuToggle.addEventListener("click", () => {
+    navbar.classList.toggle("open");
   });
 }
