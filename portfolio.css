@@ -662,3 +662,55 @@
     transition: none !important;
   }
 }
+
+@media (max-width: 768px) {
+  .gallery-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gallery-footer-text {
+    max-width: 100%;
+  }
+}
+
+.gallery-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  padding: 18px 22px 22px;
+}
+
+.gallery-footer-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 85%;
+}
+
+.gallery-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.gallery-description {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+.gallery-counter {
+  margin: 0;
+  color: #cfd8ff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+}

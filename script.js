@@ -16,7 +16,15 @@ const translations = {
       print: "Print Design",
       banners: "Banner Design",
       social: "Social Media",
-      default: "Gallery"
+      default: "Gallery",
+      descriptions: {
+        print:
+          "This includes business cards, flyers, vehicle wraps, and other printed materials for everyday use.",
+        banners:
+          "Banners and promotional visuals for web, print, and different types of campaigns.",
+        social:
+          "Graphics for social media and newsletters, designed to look clear, consistent, and easy to use."
+      }
     },
     form: {
       sending: "Sending message...",
@@ -29,7 +37,15 @@ const translations = {
       print: "Tiskovine",
       banners: "Oblikovanje bannerjev",
       social: "Družbena omrežja",
-      default: "Galerija"
+      default: "Galerija",
+      descriptions: {
+        print:
+          "Sem spadajo vizitke, letaki, polepi vozil in drugi tiskani materiali za vsakdanjo uporabo.",
+        banners:
+          "Bannerji in promocijski vizuali za splet, tisk in različne kampanje.",
+        social:
+          "Grafike za družbena omrežja in novičnike, pripravljene tako, da delujejo enotno in pregledno."
+      }
     },
     form: {
       sending: "Pošiljanje sporočila...",
@@ -377,6 +393,7 @@ const galleries = {
 const galleryModal = document.getElementById("galleryModal");
 const galleryImage = document.getElementById("galleryImage");
 const galleryTitle = document.getElementById("galleryTitle");
+const galleryDescription = document.getElementById("galleryDescription");
 const galleryCounter = document.getElementById("galleryCounter");
 const galleryClose = document.querySelector(".gallery-close");
 const galleryPrev = document.querySelector(".gallery-prev");
@@ -405,11 +422,31 @@ function formatGalleryTitle(category) {
   }
 }
 
+function formatGalleryDescription(category) {
+  const descriptions = translations[currentLang].gallery.descriptions;
+
+  switch (category) {
+    case "print":
+      return descriptions.print;
+    case "banners":
+      return descriptions.banners;
+    case "social":
+      return descriptions.social;
+    default:
+      return "";
+  }
+}
+
 function updateGalleryImage() {
   if (!galleryImage || currentGallery.length === 0) return;
 
   galleryImage.src = currentGallery[currentIndex];
   galleryTitle.textContent = formatGalleryTitle(currentCategory);
+
+  if (galleryDescription) {
+    galleryDescription.textContent = formatGalleryDescription(currentCategory);
+  }
+
   galleryCounter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
 }
 
@@ -446,6 +483,10 @@ function closeGallery() {
     galleryImage.src = "";
   }
 
+  if (galleryDescription) {
+    galleryDescription.textContent = "";
+  }
+
   if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
     lastFocusedElement.focus();
   }
@@ -472,7 +513,6 @@ function handleSwipeGesture() {
   const minSwipeDistance = 50;
 
   if (Math.abs(deltaX) < minSwipeDistance) return;
-
   if (Math.abs(deltaY) > Math.abs(deltaX)) return;
 
   if (deltaX < 0) {
