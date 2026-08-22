@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vprašalnik za pripravo spletne strani — Nika Dev Studio" />
+  <title>Nika Dev Studio – Vprašalnik za spletno stran</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="header">
+      <p class="eyebrow">Nika Dev Studio</p>
+      <h1>Vprašalnik za spletno stran</h1>
+      <p class="sub">
+        Da bom lahko pripravila spletno stran, ki bo res predstavljala vaše podjetje in podpirala vaše cilje,
+        potrebujem nekaj osnovnih informacij. Izpolnite, kar veste — kar še ni določeno, lahko pustite prazno. 😊
+      </p>
+    </header>
+
+    <div class="progress-wrap" aria-label="Napredek vprašalnika">
+      <div class="progress-bar" aria-hidden="true">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-txt" id="progressTxt">0 % izpolnjeno</div>
+    </div>
+
+    <form id="vform" novalidate>
+      <!-- 1 -->
+      <section class="glass">
+        <div class="sec-head">
+          <div class="sec-num">1</div>
+          <div>
+            <h2>O podjetju</h2>
+            <div class="sec-desc">Osnovni podatki</div>
+          </div>
+        </div>
+
+        <div class="field-grid two-col">
+          <div class="field">
+            <label for="ime_podjetja">Ime podjetja</label>
+            <input id="ime_podjetja" type="text" name="ime_podjetja" placeholder="npr. Zlatarstvo Tajnšek" data-progress="true" />
+          </div>
+
+          <div class="field">
+            <label for="kontakt_oseba">Kontaktna oseba</label>
+            <input id="kontakt_oseba" type="text" name="kontakt_oseba" placeholder="Ime in priimek" data-progress="true" />
+          </div>
+        </div>
+
+        <div class="field-grid two-col">
+          <div class="field">
+            <label for="telefon">Telefon</label>
+            <input id="telefon" type="tel" name="telefon" placeholder="+386 ..." />
+          </div>
+
+          <div class="field">
+            <label for="email">E-pošta</label>
+            <input id="email" type="email" name="email" placeholder="vas@email.si" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="naslov">Naslov / lokacija</label>
+          <input id="naslov" type="text" name="naslov" placeholder="Ulica, kraj" />
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section class="glass">
+        <div class="sec-head">
+          <div class="sec-num">2</div>
+          <div>
+            <h2>Vaša dejavnost</h2>
+            <div class="sec-desc">Kaj počnete in komu je namenjeno</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="dejavnost">S čim se ukvarjate?</label>
+          <div class="hint">Na kratko opišite podjetje in svojo ponudbo.</div>
+          <textarea id="dejavnost" name="dejavnost" placeholder="npr. izdelava unikatnega nakita, poročni in zaročni prstani, graviranje, popravila nakita ..." data-progress="true"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="storitve">Katere so vaše glavne storitve ali izdelki?</label>
+          <div class="hint">Naštejte tiste, ki jih želite na spletni strani najbolj izpostaviti.</div>
+          <textarea id="storitve" name="storitve" placeholder="npr. prstani, uhani, ogrlice, zapestnice, izdelava po naročilu ..." data-progress="true"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="stranke">Kdo so vaše stranke?</label>
+          <div class="hint">Komu so vaše storitve ali izdelki predvsem namenjeni?</div>
+          <textarea id="stranke" name="stranke" placeholder="npr. pari, ki iščejo poročne prstane, kupci unikatnih daril, lokalne stranke, turisti ..." data-progress="true"></textarea>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="glass">
+        <div class="sec-head">
+          <div class="sec-num">3</div>
+          <div>
+            <h2>Cilji spletne strani</h2>
+            <div class="sec-desc">Kaj želite doseči</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Kaj naj spletna stran predvsem doseže?</label>
+          <div class="hint">Izberite vse, kar velja.</div>
+          <div class="checks" data-group="cilji" data-progress-group="true">
+            <label class="check-item"><input type="checkbox" value="Več strank in povpraševanj" /><span class="check-box">✓</span><span>Več strank / povpraševanj</span></label>
+            <label class="check-item"><input type="checkbox" value="Da nas stranke lažje najdejo na spletu" /><span class="check-box">✓</span><span>Da nas lažje najdejo</span></label>
+            <label class="check-item"><input type="checkbox" value="Profesionalna in zaupanja vredna predstavitev podjetja" /><span class="check-box">✓</span><span>Profesionalna predstavitev</span></label>
+            <label class="check-item"><input type="checkbox" value="Predstavitev izdelkov oziroma kolekcij" /><span class="check-box">✓</span><span>Predstavitev izdelkov</span></label>
+            <label class="check-item"><input type="checkbox" value="Predstavitev zgodbe, tradicije in načina dela" /><span class="check-box">✓</span><span>Zgodba in tradicija</span></label>
+            <label class="check-item"><input type="checkbox" value="Spletna prodaja zdaj ali v prihodnosti" /><span class="check-box">✓</span><span>Spletna prodaja</span></label>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="glass">
+        <div class="sec-head">
+          <div class="sec-num">4</div>
+          <div>
+            <h2>Vsebina strani</h2>
+            <div class="sec-desc">Kaj naj obiskovalci najdejo na strani</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Kateri razdelki naj bodo na spletni strani?</label>
+          <div class="hint">Izberite vse, kar želite. Končno strukturo lahko skupaj še prilagodimo.</div>
+          <div class="checks" data-group="vsebina" data-progress-group="true">
+            <label class="check-item"><input type="checkbox" value="O nas / zgodba podjetja" /><span class="check-box">✓</span><span>O nas / naša zgodba</span></label>
+            <label class="check-item"><input type="checkbox" value="Izdelki / kolekcije" /><span class="check-box">✓</span><span>Izdelki / kolekcije</span></label>
+            <label class="check-item"><input type="checkbox" value="Storitve" /><span class="check-box">✓</span><span>Storitve</span></label>
+            <label class="check-item"><input type="checkbox" value="Izdelava po naročilu" /><span class="check-box">✓</span><span>Izdelava po naročilu</span></label>
+            <label class="check-item"><input type="checkbox" value="Galerija" /><span class="check-box">✓</span><span>Galerija</span></label>
+            <label class="check-item"><input type="checkbox" value="Mnenja strank" /><span class="check-box">✓</span><span>Mnenja strank</span></label>
+            <label class="check-item"><input type="checkbox" value="Kontaktni obrazec" /><span class="check-box">✓</span><span>Kontaktni obrazec</span></label>
+            <label class="check-item"><input type="checkbox" value="Kontakt in delovni čas" /><span class="check-box">✓</span><span>Kontakt in delovni čas</span></label>
+            <label class="check-item"><input type="checkbox" value="Lokacija / zemljevid" /><span class="check-box">✓</span><span>Lokacija / zemljevid</span></label>
+            <label class="check-item"><input type="checkbox" value="Družbena omrežja" /><span class="check-box">✓</span><span>Družbena omrežja</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="delovni_cas">Delovni čas</label>
+          <textarea id="delovni_cas" name="delovni_cas" placeholder="npr. Pon–Pet 8:00–18:00, Sob 8:00–13:00, Ned zaprto"></textarea>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section class="glass">
+        <div class="sec-head">
+          <div class="sec-num">5</div>
+          <div>
+            <h2>Izdelki in spletna prodaja</h2>
+            <div class="sec-desc">Kako naj bodo izdelki predstavljeni</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Kako želite predstaviti izdelke?</label>
+          <div class="hint">Izberite vse možnosti, ki pridejo v poštev.</div>
+          <div class="checks" data-group="izdelki" data-progress-group="true">
+            <label class="check-item"><input type="checkbox" value="Samo predstavitev izdelkov brez cen" /><span class="check-box">✓</span><span>Samo predstavitev</span></label>
+            <label class="check-item"><input type="checkbox" value="Predstavitev izdelkov z navedeno ceno" /><span class="check-box">✓</span><span>Prikaz cen</span></label>
+            <label class="check-item"><input type="checkbox" value="Možnost povpraševanja za posamezen izdelek" /><span class="check-box">✓</span><span>Povpraševanje za izdelek</span></label>
+            <label class="check-item"><input type="checkbox" value="Spletna trgovina z nakupom in plačilom" /><span class="check-box">✓</span><span>Spletna trgovina</span></label>
+            <label class="check-item"><input type="checkbox" value="Spletna trgovina morda kasneje" /><span class="check-box">✓</span><span>Morda kasneje</span></label>
+            <label class="check-item"><input type="checkbox" value="Še nisem prepričan/a" /><span class="check-box">✓</span><span>Še ne vem</span></label>
+          </div>
+        </div>
+
+        <div class="field-grid two-col">
+          <div class="field">
+            <label for="st_izdelkov">Približno koliko izdelkov želite predstaviti?</label>
+            <input id="st_izdelkov" type="text" name="st_izdelkov" placeholder="npr. 20–30 / približno 100 / ponudba se pogosto spreminja" data-progress="true" />
+          </div>
+
+          <div class="field">
+            <label for="pogostost">Kako pogosto se ponudba spreminja?</label>
+            <input id="pogostost" type="text" name="pogostost" placeholder="npr. sezonsko / mesečno / redko" />
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section class="glass">
+        <div class="sec-head">
+          <div class="sec-num">6</div>
+          <div>
+            <h2>Gradivo</h2>
+            <div class="sec-desc">Kaj že imate pripravljeno</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Kaj že imate?</label>
+          <div class="hint">Izberite vse, kar imate pripravljeno.</div>
+          <div class="checks" data-group="gradivo" data-progress-group="true" data-exclusive-value="Nič od tega">
+            <label class="check-item"><input type="checkbox" value="Logotip" /><span class="check-box">✓</span><span>Logotip</span></label>
+            <label class="check-item"><input type="checkbox" value="Fotografije izdelkov" /><span class="check-box">✓</span><span>Fotografije izdelkov</span></label>
+            <label class="check-item"><input type="checkbox" value="Besedila / opisi" /><span class="check-box">✓</span><span>Besedila / opisi</span></label>
+            <label class="check-item"><input type="checkbox" value="Barve in vizualna podoba znamke" /><span class="check-box">✓</span><span>Barve znamke</span></label>
+            <label class="check-item"><input type="checkbox" value="Nič od tega" /><span class="check-box">✓</span><span>Nič od tega</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Kakšne fotografije izdelkov imate?</label>
+          <div class="checks" data-group="fotografije">
+            <label class="check-item"><input type="checkbox" value="Profesionalne produktne fotografije" /><span class="check-box">✓</span><span>Profesionalne fotografije</span></label>
+            <label class="check-item"><input type="checkbox" value="Fotografije, ki smo jih posneli sami" /><span class="check-box">✓</span><span>Lastne fotografije</span></label>
+            <label class="check-item"><input type="checkbox" value="Fotografije bo treba še pripraviti" /><span class="check-box">✓</span><span>Fotografije še potrebujemo</span></label>
+            <label class="check-item"><input type="checkbox" value="Nisem prepričan/a, ali so dovolj kakovostne" /><span class="check-box">✓</span><span>Nisem prepričan/a</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="dodatne_foto">Imate tudi fotografije trgovine, delavnice ali postopka izdelave?</label>
+          <input id="dodatne_foto" type="text" name="dodatne_foto" placeholder="npr. da / ne / nekaj fotografij imamo" />
+        </div>
+
+        <div class="field">
+          <label for="domena">Imate že domeno ali obstoječo spletno stran?</label>
+          <input id="domena" type="text" name="domena" placeholder="npr. www.mojadomena.si / ne, še nimamo" />
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section class="glass">
+        <div class="sec-head">
+          <div class="sec-num">7</div>
+          <div>
+            <h2>Jeziki</h2>
+            <div class="sec-desc">V katerih jezikih naj bo spletna stran</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Katere jezike želite na spletni strani?</label>
+          <div class="checks" data-group="jeziki" data-progress-group="true">
+            <label class="check-item"><input type="checkbox" value="Slovenščina" /><span class="check-box">✓</span><span>Slovenščina</span></label>
+            <label class="check-item"><input type="checkbox" value="Angleščina" /><span class="check-box">✓</span><span>Angleščina</span></label>
+            <label class="check-item"><input type="checkbox" value="Nemščina" /><span class="check-box">✓</span><span>Nemščina</span></label>
+            <label class="check-item"><input type="checkbox" value="Hrvaščina" /><span class="check-box">✓</span><span>Hrvaščina</span></label>
+            <label class="check-item"><input type="checkbox" value="Drug jezik" /><span class="check-box">✓</span><span>Drugo</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="drugi_jezik">Če ste izbrali »Drugo«, kateri jezik?</label>
+          <input id="drugi_jezik" type="text" name="drugi_jezik" placeholder="npr. italijanščina" />
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section class="glass">
+        <div class="sec-head">
+          <div class="sec-num">8</div>
+          <div>
+            <h2>Videz in stil</h2>
+            <div class="sec-desc">Kako naj spletna stran deluje na obiskovalca</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="stil">Kakšen stil vam je všeč?</label>
+          <div class="hint">Opišite z besedami ali navedite občutek, ki ga želite doseči.</div>
+          <textarea id="stil" name="stil" placeholder="npr. elegantno, prestižno, minimalistično, temno, toplo, tradicionalno, sodobno ..." data-progress="true"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="obcutek">Kaj naj obiskovalec ob obisku strani začuti?</label>
+          <input id="obcutek" type="text" name="obcutek" placeholder="npr. zaupanje, kakovost, ekskluzivnost, tradicijo, osebni pristop ..." />
+        </div>
+
+        <div class="field">
+          <label for="barve">Barve, ki jih želite (ali se jim želite izogniti)</label>
+          <input id="barve" type="text" name="barve" placeholder="npr. črna, zlata in bela / brez rdeče" />
+        </div>
+
+        <div class="field">
+          <label for="primeri">Spletne strani, ki so vam všeč</label>
+          <div class="hint">Če poznate kakšno stran, ki vam je všeč, mi povezava zelo pomaga razumeti vaš okus.</div>
+          <textarea id="primeri" name="primeri" placeholder="Povezave do strani, ki so vam všeč ..."></textarea>
+        </div>
+      </section>
+
+      <!-- 9 -->
+      <section class="glass">
+        <div class="sec-head">
+          <div class="sec-num">9</div>
+          <div>
+            <h2>Tisk na tekstil</h2>
+            <div class="sec-desc">Majice, puloverji, torbe in drugi tekstilni izdelki</div>
+          </div>
+        </div>
+
+        <div class="service-note">
+          Nika Dev Studio po novem ponuja tudi kakovosten tisk na tekstil. Če ob spletni strani potrebujete še
+          majice, puloverje, tekstilne torbe ali delovna oblačila z vašim logotipom oziroma motivom, lahko za vse
+          poskrbimo na enem mestu.
+        </div>
+
+        <div class="field">
+          <label>Bi vas zanimal tudi tisk na tekstil?</label>
+          <div class="hint">Izberite vse možnosti, ki bi jih morda potrebovali.</div>
+          <div class="checks" data-group="tisk" data-exclusive-value="Trenutno ne potrebujemo tiska">
+            <label class="check-item"><input type="checkbox" value="Tisk na majice" /><span class="check-box">✓</span><span>Majice</span></label>
+            <label class="check-item"><input type="checkbox" value="Tisk na puloverje oziroma jopice s kapuco" /><span class="check-box">✓</span><span>Puloverji / jopice</span></label>
+            <label class="check-item"><input type="checkbox" value="Tisk na tekstilne torbe" /><span class="check-box">✓</span><span>Tekstilne torbe</span></label>
+            <label class="check-item"><input type="checkbox" value="Tisk na delovna oblačila" /><span class="check-box">✓</span><span>Delovna oblačila</span></label>
+            <label class="check-item"><input type="checkbox" value="Drug tekstilni izdelek" /><span class="check-box">✓</span><span>Drugo</span></label>
+            <label class="check-item"><input type="checkbox" value="Trenutno ne potrebujemo tiska" /><span class="check-box">✓</span><span>Trenutno ne</span></label>
+          </div>
+        </div>
+
+        <div class="field-grid two-col">
+          <div class="field">
+            <label for="tisk_kolicina">Približna količina</label>
+            <input id="tisk_kolicina" type="text" name="tisk_kolicina" placeholder="npr. 10 majic in 5 puloverjev" />
+          </div>
+
+          <div class="field">
+            <label for="tisk_motiv">Imate že pripravljen logotip ali motiv?</label>
+            <input id="tisk_motiv" type="text" name="tisk_motiv" placeholder="npr. da / ne / potrebujemo tudi oblikovanje" />
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section class="glass">
+        <div class="sec-head">
+          <div class="sec-num">10</div>
+          <div>
+            <h2>Še kaj?</h2>
+            <div class="sec-desc">Dodatne želje in časovni okvir</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="opombe">Posebne želje ali opombe</label>
+          <textarea id="opombe" name="opombe" placeholder="Karkoli, kar bi radi dodali ..."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="rok">Do kdaj bi želeli imeti spletno stran pripravljeno?</label>
+          <input id="rok" type="text" name="rok" placeholder="npr. v naslednjem mesecu / do decembra / ni nujno" />
+        </div>
+      </section>
+
+      <div class="btn-row">
+        <button type="button" class="btn" id="sendBtn">Ustvari in pošlji povzetek ✦</button>
+      </div>
+
+      <p class="intro-note">
+        Ko izpolnite vprašalnik, kliknite »Ustvari in pošlji povzetek«. Odgovori bodo poslani neposredno na e-poštni naslov Nika Dev Studio.
+      </p>
+      <p class="privacy-note">
+        Med izpolnjevanjem se odgovori shranjujejo samo v vašem brskalniku. Pošljejo se šele, ko kliknete gumb za pošiljanje,
+        uporabljeni pa bodo samo za pripravo predloga in komunikacijo o vašem projektu.
+      </p>
+    </form>
+
+    <section class="result" id="result" aria-live="polite">
+      <div class="glass">
+        <div class="sec-head">
+          <div class="sec-num">✓</div>
+          <div>
+            <h2>Vaš povzetek</h2>
+            <div class="sec-desc" id="resultDesc">Povzetek vaših odgovorov</div>
+          </div>
+        </div>
+
+        <div class="send-status" id="sendStatus" role="status"></div>
+
+        <div class="result-box" id="resultBox"></div>
+
+        <div class="btn-row result-actions">
+          <button type="button" class="btn" id="copyBtn">Kopiraj besedilo</button>
+          <button type="button" class="btn btn-ghost" id="emailBtn">Rezervno: odpri e-pošto</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status">Besedilo kopirano! ✦</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
