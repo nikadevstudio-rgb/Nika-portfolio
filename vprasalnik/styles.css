@@ -502,13 +502,96 @@ textarea::placeholder {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --purple: #7864a6;
+    --blue: #55709d;
+    --cyan: #5f8f99;
+    --soft-blue: rgba(156, 166, 199, 0.58);
+    --line: rgba(104, 139, 166, 0.22);
+    --field-bg: rgba(10, 12, 22, 0.72);
+    --panel-bg: rgba(12, 13, 23, 0.68);
+  }
+
+  body {
+    background: radial-gradient(circle at 42% 18%, #151426 0%, #0a0b15 48%, #05060b 100%);
+  }
+
+  body::before {
+    background:
+      radial-gradient(circle at 12% 18%, rgba(91, 111, 151, 0.09), transparent 24%),
+      radial-gradient(circle at 88% 42%, rgba(119, 92, 148, 0.08), transparent 28%),
+      radial-gradient(circle at 45% 82%, rgba(86, 135, 143, 0.05), transparent 25%);
+  }
+
+  body::after {
+    opacity: 0.22;
+  }
+
   .page-shell {
     padding: 30px 16px 50px;
+  }
+
+  .eyebrow {
+    color: rgba(158, 166, 200, 0.7);
+  }
+
+  .header h1 {
+    background: linear-gradient(90deg, #8d78b4 0%, #6f82ad 52%, #6d999f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .progress-fill {
+    background: linear-gradient(90deg, #725c9c, #526b94, #5d858c);
+  }
+
+  .progress-txt,
+  .sec-desc,
+  .hint,
+  .intro-note {
+    color: rgba(151, 160, 194, 0.62);
   }
 
   .glass {
     padding: 24px 18px;
     border-radius: 20px;
+    background: rgba(10, 11, 19, 0.72);
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.18);
+  }
+
+  .glass::before {
+    background: linear-gradient(
+      120deg,
+      rgba(116, 91, 153, 0.32),
+      rgba(77, 104, 149, 0.34),
+      rgba(77, 127, 135, 0.28)
+    );
+  }
+
+  .sec-num {
+    background: linear-gradient(135deg, #67508d, #405d8b, #3f747c);
+    box-shadow: 0 0 12px rgba(75, 112, 142, 0.13);
+  }
+
+  .check-item:hover,
+  .check-item.on {
+    border-color: rgba(105, 145, 159, 0.4);
+    background: rgba(75, 100, 145, 0.08);
+  }
+
+  .check-item.on .check-box {
+    background: linear-gradient(135deg, #705997, #4f6b96, #527f87);
+    box-shadow: none;
+  }
+
+  .btn {
+    background: linear-gradient(90deg, #69508f 0%, #485f8a 52%, #4f7e86 100%);
+    box-shadow: 0 0 12px rgba(88, 132, 149, 0.24);
+  }
+
+  .btn:hover {
+    box-shadow: 0 0 16px rgba(88, 132, 149, 0.32);
   }
 
   .field-grid.two-col,
