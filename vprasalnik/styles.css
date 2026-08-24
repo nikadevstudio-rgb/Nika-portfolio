@@ -536,11 +536,12 @@ textarea::placeholder {
   }
 
   .header h1 {
-    background: linear-gradient(90deg, #d8caff 0%, #a9c5ff 52%, #96e7ef 100%);
+    background: #0090f7;
+    background: linear-gradient(90deg, rgba(0, 144, 247, 1) 0%, rgba(9, 87, 121, 1) 40%, rgba(0, 212, 255, 1) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 22px rgba(132, 164, 230, 0.12);
+    filter: brightness(1.35) drop-shadow(0 0 10px rgba(0, 174, 255, 0.18));
   }
 
   .progress-fill {
@@ -571,9 +572,10 @@ textarea::placeholder {
   }
 
   .sec-num {
-    background: linear-gradient(135deg, #8e62e8, #4d89df, #27b8ca);
-    box-shadow: 0 0 16px rgba(87, 145, 205, 0.24);
-    border: 1px solid rgba(190, 220, 255, 0.18);
+    background: #0090f7;
+    background: linear-gradient(90deg, rgba(0, 144, 247, 1) 0%, rgba(9, 87, 121, 1) 40%, rgba(0, 212, 255, 1) 100%);
+    box-shadow: 0 0 18px rgba(0, 174, 255, 0.34);
+    border: 1px solid rgba(159, 230, 255, 0.26);
   }
 
   .check-item:hover,
