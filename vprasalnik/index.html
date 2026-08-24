@@ -13,7 +13,7 @@
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <div class="page-shell">
@@ -363,14 +363,14 @@
       </section>
 
       <div class="btn-row">
-        <button type="button" class="btn" id="sendBtn">Ustvari in pošlji povzetek ✦</button>
+        <button type="button" class="btn" id="generateBtn">Ustvari povzetek ✦</button>
       </div>
 
       <p class="intro-note">
-        Ko izpolnite vprašalnik, kliknite »Ustvari in pošlji povzetek«. Odgovori bodo poslani neposredno na e-poštni naslov Nika Dev Studio.
+        Ko izpolnite vprašalnik, kliknite »Ustvari povzetek«. Odgovore boste lahko preverili in jih nato z enim klikom poslali neposredno na Nika Dev Studio.
       </p>
       <p class="privacy-note">
-        Med izpolnjevanjem se odgovori shranjujejo samo v vašem brskalniku. Pošljejo se šele, ko kliknete gumb za pošiljanje,
+        Med izpolnjevanjem se odgovori shranjujejo samo v vašem brskalniku. Pošljejo se šele, ko kliknete »Pošlji na nikadevstudio@gmail.com«,
         uporabljeni pa bodo samo za pripravo predloga in komunikacijo o vašem projektu.
       </p>
     </form>
@@ -390,8 +390,7 @@
         <div class="result-box" id="resultBox"></div>
 
         <div class="btn-row result-actions">
-          <button type="button" class="btn" id="copyBtn">Kopiraj besedilo</button>
-          <button type="button" class="btn btn-ghost" id="emailBtn">Rezervno: odpri e-pošto</button>
+          <button type="button" class="btn" id="directSendBtn">Pošlji na nikadevstudio@gmail.com ✦</button>
         </div>
       </div>
     </section>
@@ -399,6 +398,6 @@
 
   <div class="toast" id="toast" role="status">Besedilo kopirano! ✦</div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>

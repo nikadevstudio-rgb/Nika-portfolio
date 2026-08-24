@@ -8,7 +8,8 @@ const result = document.getElementById("result");
 const resultBox = document.getElementById("resultBox");
 const resultDesc = document.getElementById("resultDesc");
 const sendStatus = document.getElementById("sendStatus");
-const sendBtn = document.getElementById("sendBtn");
+const generateBtn = document.getElementById("generateBtn");
+const directSendBtn = document.getElementById("directSendBtn");
 const toast = document.getElementById("toast");
 
 function val(name) {
@@ -211,6 +212,14 @@ function generateSummary() {
   return text;
 }
 
+function showSummary() {
+  generateSummary();
+  sendStatus.className = "send-status";
+  sendStatus.textContent = "";
+  resultDesc.textContent = "Preverite odgovore in jih nato pošljite neposredno na Nika Dev Studio";
+  result.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function validateForSending() {
   if (!val("ime_podjetja") && !val("kontakt_oseba")) {
     showToast("Vpišite ime podjetja ali kontaktno osebo.", "error");
@@ -227,7 +236,7 @@ function validateForSending() {
   return true;
 }
 
-async function createAndSendSummary() {
+async function sendSummaryDirect() {
   if (!validateForSending()) return;
 
   const text = generateSummary();
@@ -244,10 +253,12 @@ async function createAndSendSummary() {
 
   if (val("email")) payload.append("_replyto", val("email"));
 
-  sendBtn.disabled = true;
-  sendBtn.textContent = "Pošiljanje ...";
+  directSendBtn.disabled = true;
+  directSendBtn.textContent = "Pošiljanje ...";
   sendStatus.className = "send-status sending";
   sendStatus.textContent = "Povzetek se pošilja ...";
+
+  let sentSuccessfully = false;
 
   try {
     const response = await fetch(`https://formsubmit.co/ajax/${NIKA_EMAIL}`, {
@@ -260,48 +271,25 @@ async function createAndSendSummary() {
 
     sendStatus.className = "send-status success";
     sendStatus.textContent = "Hvala! Vaši odgovori so bili uspešno poslani na Nika Dev Studio.";
-    resultDesc.textContent = "Povzetek je bil poslan — spodaj ga lahko tudi pregledate";
+    resultDesc.textContent = "Povzetek je bil uspešno poslan na nikadevstudio@gmail.com";
     localStorage.removeItem(STORAGE_KEY);
+    sentSuccessfully = true;
+    directSendBtn.textContent = "Uspešno poslano ✓";
     showToast("Vprašalnik je bil poslan! ✦");
   } catch (error) {
     console.error(error);
     sendStatus.className = "send-status error";
     sendStatus.textContent =
-      "Pošiljanje trenutno ni uspelo. Vaši odgovori niso izgubljeni — spodaj jih lahko kopirate ali odprete v e-pošti.";
+      "Pošiljanje trenutno ni uspelo. Vaši odgovori niso izgubljeni — ostajajo shranjeni v brskalniku. Poskusite znova.";
     resultDesc.textContent = "Povzetek vaših odgovorov";
     showToast("Pošiljanje ni uspelo. Poskusite znova.", "error");
   } finally {
-    sendBtn.disabled = false;
-    sendBtn.textContent = "Ustvari in pošlji povzetek ✦";
+    if (!sentSuccessfully) {
+      directSendBtn.disabled = false;
+      directSendBtn.textContent = "Pošlji na nikadevstudio@gmail.com ✦";
+    }
     result.scrollIntoView({ behavior: "smooth", block: "start" });
   }
-}
-
-async function copyResult() {
-  const text = resultBox.textContent;
-  if (!text) return;
-
-  try {
-    await navigator.clipboard.writeText(text);
-    showToast();
-  } catch {
-    const range = document.createRange();
-    range.selectNode(resultBox);
-    const selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
-    document.execCommand("copy");
-    selection.removeAllRanges();
-    showToast();
-  }
-}
-
-function sendEmail() {
-  const text = resultBox.textContent || "";
-  const company = val("ime_podjetja") || "novo povpraševanje";
-  const subject = encodeURIComponent(`Vprašalnik za spletno stran — ${company}`);
-  const body = encodeURIComponent(text);
-  window.location.href = `mailto:${NIKA_EMAIL}?subject=${subject}&body=${body}`;
 }
 
 function showToast(message = "Besedilo kopirano! ✦", type = "success") {
@@ -319,9 +307,8 @@ form.addEventListener("input", () => {
   updateProgress();
 });
 
-sendBtn.addEventListener("click", createAndSendSummary);
-document.getElementById("copyBtn").addEventListener("click", copyResult);
-document.getElementById("emailBtn").addEventListener("click", sendEmail);
+generateBtn.addEventListener("click", showSummary);
+directSendBtn.addEventListener("click", sendSummaryDirect);
 
 initCheckboxes();
 loadForm();
